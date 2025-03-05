@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 import "../App.css";
-import axios from "axios";
+
+import API from "./api";
 
 const Login = () => {
   const [formData, setFormData] = useState("");
@@ -14,7 +15,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      const response = await API.post(
         `/student/login?registrationNumber=${formData}`,
         null,
         { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
